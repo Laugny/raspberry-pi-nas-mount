@@ -1,0 +1,13 @@
+[Unit]
+Description=Mount NAS HDD after USB attach
+After=systemd-udevd.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/mount-hdd.sh
+ExecStop=/usr/local/bin/umount-hdd.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+

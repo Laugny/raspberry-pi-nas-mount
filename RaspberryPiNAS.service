@@ -1,0 +1,18 @@
+[Unit]
+Description=Raspberry PI NAS Web Panel
+After=network.target
+
+[Service]
+WorkingDirectory=/home/pi/NasApp
+ExecStart=/usr/bin/dotnet /home/pi/RaspberryPiNAS/Publish/RaspberryPiNAS.dll
+Restart=always
+RestartSec=5
+KillSignal=SIGINT
+SyslogIdentifier=RaspberryPiNAS
+User=pi
+Environment=ASPNETCORE_ENVIRONMENT=Production
+Environment=DOTNET_PRINT_TELEMETRY_MESSAGE=false
+
+[Install]
+WantedBy=multi-user.target
+
